@@ -2,12 +2,12 @@ import './App.css';
 import React, {useState} from 'react';
 import Homepage from './restaurant components/HomePage';
 import Login from './restaurant components/Login';
-
+import RestaurantPage from './restaurant components/RestuarantList';
+import SignUp from './restaurant components/SignUp';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 function App() {
@@ -22,15 +22,16 @@ function App() {
   //     document.body.style.backgroundColor="white";
   //   }
   // }
-  const [login,logState]=useState(0);
-  
+  const [logstate,changeState]=useState(0);
 
   return (
     <>
     <Router>
       <Routes>
-        <Route exact path='/' element={<Homepage/>}></Route>
-        <Route exact path='/login' element={<Login/>}></Route>
+        <Route exact path ='/' element={<Homepage  logstate={logstate} changeState={changeState}/>}></Route>
+        <Route exact path ='/login' element={<Login logstate={logstate} changeState={changeState}/>}></Route>
+        <Route exact path ='/signup' element={<SignUp logstate={logstate} changeState={changeState}/>}></Route>
+        <Route exact path ='/restaurant' element={<RestaurantPage/>}></Route>
       </Routes>
     </Router>
     </>
