@@ -24,11 +24,10 @@
   background: #2e8b57;
 }
 
-
 /* CSS for Login Page. */
 .box{
   background-color: pink;
-  width: 24vw;
+  width: 28vw;
   margin: 0px;
   padding: 4vh 2vw;
 }
@@ -49,7 +48,7 @@
 .remember a:hover{
   text-decoration: underline;
 }
-.btn_login{
+/* .btn_login{
   width: 75%;
   height: 6vh;
   background: white;
@@ -59,7 +58,7 @@
   background-color:darkslateblue;
   color: white;
   border: 2px solid black;
-}
+} */
 .btn_login:hover{
   color: black;
 }

@@ -9,8 +9,8 @@ export default function HomePage(props) {
     return (
         <div className='background'>
         <Navbar/>
-        <div style={{display: "flex", alignItems:"center", justifyContent:"center"}}>
-            <div className="card" style={{width: 18 +"rem", margin: 2+"rem"}}>
+        <div style={{display: "flex", alignItems:"center", justifyContent:"center", flexWrap: "wrap"}}>
+            <div className="card" style={{maxWidth: 18 +"rem", margin: 2+"rem"}}>
                 <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">Create Profile</h5>
@@ -18,7 +18,7 @@ export default function HomePage(props) {
                     <NavLink to={props.logstate===0?"/login":"/restaurant"} className="btn btn-primary">{props.logstate===0?"Sign-in":"Edit Profile"}</NavLink>
                 </div>
             </div>
-            <div className="card" style={{width: 18 +"rem", margin: 2+"rem"}}>
+            <div className="card" style={{maxWidth: 18 +"rem", margin: 2+"rem"}}>
                 <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">How to use</h5>
@@ -26,7 +26,7 @@ export default function HomePage(props) {
                     <NavLink to="/" className="btn btn-primary">Read Content</NavLink>
                 </div>
             </div>
-            <div className="card" style={{width: 18 +"rem", margin: 2+"rem"}}>
+            <div className="card" style={{maxWidth: 18 +"rem", margin: 2+"rem"}}>
                 <img src={logo} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">Features</h5>
