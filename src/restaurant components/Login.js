@@ -1,9 +1,15 @@
-import React,{ useState} from 'react';
+import React,{ useState,useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { UserLogin } from '../restaurant services/UserService';
 import Alert from './Alert';
+import navContext from './Context/navContext'
+import background from "./background3.JPG"
+import restro_maker from "./Restro-maker.jpg"
 
 export default function Login(props) {
+
+  const context = useContext(navContext);
+  const {changeState} = context;
 
   const [username,setUsername] = useState('');
   const [password,setPassword] = useState('');
@@ -47,10 +53,28 @@ export default function Login(props) {
     if(username.length!==0 && password.length!==0){
       const user_login = {username,password};
       UserLogin(user_login).then((response)=>{
-        props.changeState(1);
-        navigate('/restaurant');
-        setIsValid(1);
-      }).catch(error=>{
+        // console.log(response.data.jwtToken);
+        if(response.data!=="Credentials Invalid !!"){
+          setIsValid(1);
+          changeState(1);
+          localStorage.setItem("token",response.data.jwtToken)
+          navigate("/");
+        }
+        else{
+          setIsValid(0);
+          if(isValid===0){
+            showAlert();
+          }
+        }
+
+        // if(type==="owner"){
+        //   navigate(`/restaurant/${username}`);
+        // }
+        // else{
+        //   navigate("/user/home")
+        // }
+      }).catch(error =>{
+        // console.error(error);
         setIsValid(0);
         if(isValid===0){
           showAlert();
@@ -69,9 +93,31 @@ export default function Login(props) {
     setEmptyPass(0);
   }
 
+  const GoToHome = () =>{
+    navigate("/");
+  }
+
   return (
-    <div className='background'>
-      <center><div className="box rounded-3">
+    <div className='background-login'>
+      <img src={background} alt="background" style={{height:"120vh",width:"100vw",zIndex:"-1",position:"absolute",opacity:"0.7"}}></img>
+      <div className='d-flex w-100' style={{backgroundColor:"rgb(0,0,0,0.4)",zIndex:"-1",opacity:"0.7"}}>
+          <img src={restro_maker} alt="Restro-maker logo"  height="150px"/>
+          <div className="w-100 fw-bold">
+              <h2 className="w-100 fs-1 fw-bold" style={{ color: "gold",textAlign:"center",  margin: "10px auto", textShadow:"-1px -1px 0 black, 1px -1px 0 black, 1px 1px 0 black,1px 1px 0 black" }}>Welcome to Restro Maker</h2>
+              <p className="fs-4" style={{ color: "#fff", margin: "auto",textAlign:"center",width:"90%" }}>
+                  Your one-stop solution for managing your restaurants. From creating profiles to organizing menus and placing orders, explore all the features we offer to streamline your business.
+              </p>
+          </div>
+      </div>
+
+      <center><div className="box rounded-3 mt-5">
+
+        {/* Back Button */}
+        <div className='d-flex mt-1 mb-4'>
+          <div className='bg-white rounded-circle'><i className="fa-solid fa-arrow-left px-2 py-2" onClick={GoToHome}></i></div>
+          <h5 className='mx-2 my-1'>Back to Home Page</h5>
+        </div>
+
         <form method="post" id="form" autoComplete='off' style={{width:"85%"}}>
             <h2>Login Page</h2>
 

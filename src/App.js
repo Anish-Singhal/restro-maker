@@ -1,45 +1,42 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
+import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
 import Homepage from './restaurant components/HomePage';
 import Login from './restaurant components/Login';
 import RestaurantPage from './restaurant components/RestuarantList';
-// import EditPage from './restaurant components/EditPage'
 import SignUp from './restaurant components/SignUp';
-import UserType from './restaurant components/UserType';
 import ForgotPassword from './restaurant components/ForgotPassword';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import Menu from './restaurant components/Menu';
+import NavState from './restaurant components/Context/NavState';
+import About from './restaurant components/About';
+import ViewDetails from './restaurant components/View details';
+import ScrollToTop from './restaurant components/ScrollToTop';
+import UserPage from './restaurant components/Userpage';
+import Order from './restaurant components/Order';
+import Profile from './restaurant components/Profile';
 
 function App() {
-  // const [mode,setMode] = useState('light');
-  // const changeMode = ()=>{
-  //   if(mode==='light'){
-  //     setMode('dark');
-  //     document.body.style.backgroundColor="rgb(0, 76, 95)";
-  //   }
-  //   else{
-  //     setMode('light');
-  //     document.body.style.backgroundColor="white";
-  //   }
-  // }
-  const [logstate,changeState]=useState(0);
 
   return (
     <>
-    <Router>
-      <Routes>
-        <Route exact path ='/' element={<Homepage  logstate={logstate} changeState={changeState}/>}></Route>
-        <Route exact path ='/login' element={<Login logstate={logstate} changeState={changeState}/>}></Route>
-        <Route exact path ='/signup' element={<SignUp logstate={logstate} changeState={changeState}/>}></Route>
-        <Route exact path ='/userType' element={<UserType logstate={logstate} changeState={changeState}/>}/>
-        <Route exact path ='/password' element={<ForgotPassword/>}></Route>
-        <Route exact path ='/restaurant' element={<RestaurantPage/>}></Route>
-        {/* <Route exact path ='/restaurant/edit' element={<EditPage/>}></Route> */}
-      </Routes>
-    </Router>
+    <NavState>
+      <Router>
+      <ScrollToTop/>
+        <Routes>
+          <Route exact path ="/" element={<Homepage/>}></Route>
+          <Route exact path ='/login' element={<Login/>}></Route>
+          <Route exact path ='/signup' element={<SignUp/>}></Route>
+          <Route exact path ='/password' element={<ForgotPassword/>}></Route>
+          <Route exact path ='/about' element={<About/>}></Route>
+          <Route exact path ='/restaurant' element={<RestaurantPage/>}></Route>
+          <Route exact path ='/restaurant/menu' element={<Menu/>}/>
+          <Route exact path ='/restaurant/view' element={<ViewDetails/>}/>
+          <Route exact path ='/orderpage' element={<UserPage/>}/>
+          <Route exact path ='/order' element={<Order/>}/>
+          <Route exact path ='/profile' element={<Profile/>}/>
+        </Routes>
+      </Router>
+    </NavState>
     </>
   );
 }

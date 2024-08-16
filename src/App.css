@@ -8,7 +8,7 @@
 
 /* To set the width of navbar */
 .navbar-len{
-  width: 80vw;
+  width: 70rem;
 }
 .navbar-len-2{
   width: 100vw;
@@ -24,12 +24,30 @@
   background: #2e8b57;
 }
 
+.background-home{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+.background-login{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  min-height: 100vh;
+}
+
 /* CSS for Login Page. */
 .box{
-  background-color: pink;
+  background-color: #ff8ac1;
   width: 28vw;
   margin: 0px;
   padding: 4vh 2vw;
+  border: 1px solid black;
+  box-shadow: 10px 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 .box h2{
   text-align: center;
@@ -74,4 +92,44 @@
 .rest_background{
   justify-content: center;
   background: #2e8b57;
+}
+
+
+/* --------------------------------------------- */
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.nav-item {
+  display: inline;
+  margin: 0px 15px;
+}
+
+.category {
+  padding: 0px 2px;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.item {
+  font-size: 1.3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: #d1a05e;
+}
+
+.description {
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

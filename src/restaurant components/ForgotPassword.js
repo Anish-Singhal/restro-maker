@@ -1,15 +1,19 @@
 import React, {useState} from "react";
 import Alert from "./Alert";
+import { ChangePassword,NewPassword } from "../restaurant services/UserService";
+import { useNavigate } from "react-router-dom";
 
-export default function ForgotPassword() {
+export default function ForgotPassword(props) {
 
   const [isValid, setIsValid] = useState(false);
-  const [name,setName] = useState('');
+  const [username,setUsername] = useState('');
   const [phone,setPhone] = useState('');
   const [emptyName,setEmptyName] =useState(0);
   const [emptyPhone,setEmptyPhone] =useState(0);
-  const [password,setPassword] = useState('');
+  const [new_password,setNewPassword] = useState('');
   const [confirm_pass,setConfirmPass] = useState('');
+
+  const navigate = useNavigate();
 
   // To show alert message on entering wrong inputs.
   const [alert,setAlert] = useState(null);
@@ -49,38 +53,32 @@ export default function ForgotPassword() {
   // Function to chech the credentails of the user.
   const checkValidation = (event) => {
     event.preventDefault();
-    if(name.length===0){
+    if(username.length===0){
       setEmptyName(1);
     }
     if(phone.length===0){
       setEmptyPhone(1);
     }
-    if(name.length!==0 && phone.length!==0){
-      setIsValid(true);
-      // setIsValid(false);
-      // if(!isValid){
-      //   showAlert();
-      // }
+    if(username.length!==0 && phone.length!==0){
+      let user_change_pass={username,phone}
+      ChangePassword(user_change_pass).then((response)=>{
+        setIsValid(true);
+      }).catch(error=>{
+        setIsValid(false);
+        if(!isValid){
+          showAlert();
+        }
+      })
     }
-    // UserLogin(user_login).then((response)=>{
-    //   props.changeState(1);
-    //   navigate('/restaurant');
-    //   setIsValid(true);
-    // }).catch(error=>{
-    //   setIsValid(false);
-    //   if(!isValid){
-    //     showAlert();
-    //   }
-    // })
   }
 
   // Functions to check the correct input format for each field.
   function Check_Password(isvalid){
-    const hasUppercase = /[A-Z]/.test(password);
-    const hasLowercase = /[a-z]/.test(password);
-    const hasNumeric = /\d/.test(password);
-    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    if(password.length===0 || (password.length>7 && password.length<21 && hasLowercase && hasUppercase && hasNumeric && !hasSpecial)){
+    const hasUppercase = /[A-Z]/.test(new_password);
+    const hasLowercase = /[a-z]/.test(new_password);
+    const hasNumeric = /\d/.test(new_password);
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(new_password);
+    if(new_password.length===0 || (new_password.length>7 && new_password.length<21 && hasLowercase && hasUppercase && hasNumeric && !hasSpecial)){
       isvalid=1;
     }
     else{
@@ -89,40 +87,57 @@ export default function ForgotPassword() {
     return isvalid;
   }
   function Check_Confirm(isvalid){
-    if(password!==confirm_pass){
+    if(new_password!==confirm_pass){
       isvalid=0;
     }
     return isvalid;
   }
 
   // Functions for handling input fields.
-  const handleName = (event)=>{
-    setName(event.target.value);
+  const handleUsername = (event)=>{
+    setUsername(event.target.value);
     setEmptyName(0);
   }
   const handlePhone = (event)=>{
     setPhone(event.target.value);
     setEmptyPhone(0);
   }
-  const handlePassword = (event)=>{
-    setPassword(event.target.value);
+  const handleNewPassword = (event)=>{
+    setNewPassword(event.target.value);
   }
   const handleConfirm = (event)=>{
     setConfirmPass(event.target.value);
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Checking Validations");
+    let password = new_password;
+    let new_pass={username,password}
+    NewPassword(new_pass).then((response)=>{
+      console.log(response.data);
+      navigate("/login");
+    })
   };
+
+  const GoToLogin = () =>{
+    navigate("/login");
+  }
 
   return (
     <div className="background text-center">
       <form className="container my-5 rounded" style={{ backgroundColor: "antiquewhite", borderRadius: "1rem", width: "28vw", padding: "4vh", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"}}>
+        
+        {/* Back Button */}
+        <div className='d-flex mb-3'>
+          <div className='bg-white rounded-circle'><i className="fa-solid fa-arrow-left" onClick={GoToLogin} style={{padding:"0.7vw 1.8vh"}}></i></div>
+          <h5 style={{paddingTop:"0.5vh",marginLeft:"1vw"}}>Back to Login Page</h5>
+        </div>
+
+        {/* Heading */}
         <h1 className="mb-4" style={{ margin: "0.5rem 1rem", fontSize: "1.8rem" }}>{isValid?"Create New Password":"Login Details"}</h1>
 
         {/* Username */}
         <div className="form-floating mb-3">
-          <input style={{ width: "90%", margin: "0 auto" }} disabled={isValid} type="text" className={`form-control rounded-4 ${emptyName===1?'is-invalid':''}`} id="username" placeholder="Enter your username"  onChange={handleName} autoComplete="off"/>
+          <input style={{ width: "90%", margin: "0 auto" }} disabled={isValid} type="text" className={`form-control rounded-2 ${emptyName===1?'is-invalid':''}`} id="username" placeholder="Enter your username"  onChange={handleUsername} autoComplete="off"/>
           <label style={{ margin: "0 5%" }} htmlFor="username">Username</label>
           {emptyName===1 && <div id="passwordHelpBlock" className="invalid-feedback d-flex mx-4 fs-6">
             *Required
@@ -131,8 +146,8 @@ export default function ForgotPassword() {
 
         {/* Phone Number */}
         <div className="form-floating mb-3">
-          <input style={{ width: "90%", margin: "0 auto" }} disabled={isValid} type="text" className={`form-control rounded-4 ${emptyPhone===1?'is-invalid':''}`} id="phone-number" placeholder="Enter your phone number"  onChange={handlePhone} autoComplete="off"/>
-          <label style={{ margin: "0 5%" }} htmlFor="phone-number">Phone Number</label>
+          <input style={{ width: "90%", margin: "0 auto" }} disabled={isValid} type="text" className={`form-control rounded-2 ${emptyPhone===1?'is-invalid':''}`} id="phone-number" placeholder="Enter your phone number"  onChange={handlePhone} autoComplete="off"/>
+          <label style={{ margin: "0 5%" }} htmlFor="Password">Phone number</label>
           {emptyPhone===1 && <div id="passwordHelpBlock" className="invalid-feedback d-flex mx-4 fs-6">
             *Required
           </div>}
@@ -144,8 +159,8 @@ export default function ForgotPassword() {
 
         {/* Password */}
         {isValid && <div className="form-floating mb-3">
-          <input style={{ width: "90%", margin: "0 auto"}} type="password" className={`form-control ${Check_Password(1)===1?'':'is-invalid'}`} id="password" placeholder="Enter your password" onChange={handlePassword} autoComplete="off"/>
-          <label style={{ margin: "0 5%" }} htmlFor="password">Enter New Password</label>
+          <input style={{ width: "90%", margin: "0 auto"}} type="password" className={`form-control ${Check_Password(1)===1?'':'is-invalid'}`} id="password" placeholder="Enter new password" onChange={handleNewPassword} autoComplete="off"/>
+          <label style={{ margin: "0 5%" }} htmlFor="New-password">Enter New Password</label>
           <span className="toggle-password" style={{ position: "absolute", right: "3rem", top: "4.8vh", transform: "translateY(-50%)", cursor: "pointer", fontSize: "0.875rem", color: "#007bff" }} onClick={togglePasswordVisibility}><i className={`fa-solid fa-${eye}`} style={{color: "black"}}></i></span>
           {Check_Password && <div id="passwordHelpBlock" className="invalid-feedback  w-auto text-start mx-3 px-2 fs-6">
             Your password must be 8-20 characters long, contain letters and numbers only. It must have at least one digit, one lowercase and one uppercase letter.

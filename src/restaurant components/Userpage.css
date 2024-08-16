@@ -1,0 +1,55 @@
+.hero {
+  background-color: #ff6f3c;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+}
+
+.hero p {
+  font-size: 1rem;
+}
+
+.hero img {
+  max-width: 100%;
+  border-radius: 0.25rem;
+}
+
+.explore-menu h2 {
+  font-size: 2rem;
+}
+
+.top-dishes .card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.top-dishes .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.top-dishes .card-footer {
+  background-color: #fff;
+  border-top: none;
+}
+
+.star-custom {
+  position: relative;
+  display: inline-block;
+  color: #ffc107; /* Color for the filled part */
+}
+
+.star-custom::before {
+  content: "\f005"; /* Unicode for a full star in FontAwesome */
+  font-family: FontAwesome;
+  position: absolute;
+  width: 80%; /* Control how much of the star is filled (e.g., 40%) */
+  overflow: hidden;
+  color: #ffc107; /* Filled color */
+}
+
+.star-custom::after {
+  content: "\f005"; /* Unicode for a full star in FontAwesome */
+  font-family: FontAwesome;
+  color: #e4e5e9; /* Unfilled color */
+}

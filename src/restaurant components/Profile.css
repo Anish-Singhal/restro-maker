@@ -1,0 +1,101 @@
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    background: #f5f6fa;
+    min-height: 100vh;
+  }
+  
+  .profile-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    padding: 20px;
+  }
+  
+  .profile-summary {
+    width: 30%;
+    text-align: center;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #6c757d;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-details {
+    margin-top: 20px;
+  }
+  
+  .profile-details .btn {
+    width: 100px;
+    margin: 5px;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .stats div {
+    text-align: center;
+  }
+  
+  .stats div span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .info {
+    margin-top: 20px;
+  }
+  
+  .info h3 {
+    margin-bottom: 10px;
+  }
+  
+  .info p {
+    margin: 0;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  

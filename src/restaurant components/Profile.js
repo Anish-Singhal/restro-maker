@@ -1,54 +1,164 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Profile.css';
 
-export default function Profile() {
+const Profile = () => {
+  // State variables for user profile
+  const [user, setUser] = useState({
+    username: 'lucky.jesse',
+    email: 'jesse@example.com',
+    firstName: 'Lucky',
+    lastName: 'Jesse',
+    address: 'Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09',
+    city: 'New York',
+    country: 'United States',
+    postalCode: '',
+    aboutMe: 'A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.',
+    friends: 22,
+    photos: 10,
+    comments: 89,
+    title: 'Solution Manager - Creative Tim Officer',
+    university: 'University of Computer Science',
+    location: 'Bucharest, Romania',
+  });
+
   return (
-    <div className='background'>
-      <nav className={`${window.location.pathname==="/"?'navbar-len':''} navbar navbar-expand-lg bg-body-tertiary`}>
-        <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">Restro-Maker</NavLink>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-                </li>
-                <li className="nav-item dropdown">
-                <NavLink className="nav-link" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Features
-                </NavLink>
-                <ul className="dropdown-menu mt-2">
-                    <li><NavLink className="dropdown-item" to="/restaurant">Restaurants</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/signup">Sign Up Page</NavLink></li>
-                    <li><NavLink className="dropdown-item" to="/login">Login here</NavLink></li>
-                </ul>
-                </li>
-                <li className="nav-item">
-                <NavLink className="nav-link" to="/">About</NavLink>
-                </li>
-                <li className="nav-item">   
-                <NavLink className="nav-link" to="/">Help</NavLink>
-                </li>
-            </ul>
-            <div className="dropdown">
-                <span role="button" data-bs-toggle="dropdown" aria-expanded="false" className='mx-3 ms-5 ps-5 fa-2xl'><i className="fa-solid fa-circle-user"></i></span>
-
-                <ul class="dropdown-menu mt-2">
-                    <li><Link to="/" class="dropdown-item">Edit Profile &nbsp;&nbsp;<i class="fa-solid fa-pen"></i></Link></li>
-                    <li><Link to="/" class="dropdown-item">Another action</Link></li>
-                    <li><hr class="dropdown-divider"/></li>
-                    <li><Link to="/" class="dropdown-item">Log Out &nbsp;&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i></Link></li>
-                </ul>
-            </div>
-            <form className="d-flex" role="search">
-                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
+    <div className="profile-container">
+      <div className="profile-card">
+        <div className="card-header">
+          <h2>My account</h2>
+          <button className="btn btn-primary">Settings</button>
         </div>
-        </nav>
+        <div className="card-body">
+          <h5 className="section-title">User Information</h5>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.username}
+                readOnly
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label>Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                value={user.email}
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-6">
+              <label>First name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.firstName}
+                readOnly
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label>Last name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.lastName}
+                readOnly
+              />
+            </div>
+          </div>
+          <h5 className="section-title">Contact Information</h5>
+          <div className="form-row">
+            <div className="form-group col-md-12">
+              <label>Address</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.address}
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group col-md-4">
+              <label>City</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.city}
+                readOnly
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label>Country</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.country}
+                readOnly
+              />
+            </div>
+            <div className="form-group col-md-4">
+              <label>Postal code</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user.postalCode}
+                readOnly
+              />
+            </div>
+          </div>
+          <h5 className="section-title">About Me</h5>
+          <div className="form-group">
+            <label>About Me</label>
+            <textarea
+              className="form-control"
+              rows="3"
+              value={user.aboutMe}
+              readOnly
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div className="profile-summary">
+        <div className="profile-picture">
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Profile"
+            className="rounded-circle"
+          />
+        </div>
+        <div className="profile-details">
+          <button className="btn btn-info">Connect</button>
+          <button className="btn btn-dark">Message</button>
+          <div className="stats">
+            <div>
+              <span>{user.friends}</span>
+              <p>Friends</p>
+            </div>
+            <div>
+              <span>{user.photos}</span>
+              <p>Photos</p>
+            </div>
+            <div>
+              <span>{user.comments}</span>
+              <p>Comments</p>
+            </div>
+          </div>
+          <div className="info">
+            <h3>{`${user.firstName} ${user.lastName}`}</h3>
+            <p>{user.location}</p>
+            <p>{user.title}</p>
+            <p>{user.university}</p>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default Profile;
