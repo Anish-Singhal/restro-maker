@@ -29,12 +29,12 @@ export const NewPassword = (details) => axios.put(REST_API_BASE_URL+"/password",
 export const CreateNewUser = (user) => axios.post(REST_API_BASE_URL+"/signup",user,config);
 export const findDuplicateUser = (user) => axios.get(REST_API_BASE_URL+"/signup",{params:{username:user}},config);
 
-export const AddRestaurant = (user_rest) => axios.post(REST_API_BASE_URL+window.location.pathname+"/new",user_rest,config);
-export const RemoveRestaurant = (user_rest) => axios.post(REST_API_BASE_URL+window.location.pathname+"/remove",user_rest,config);
+export const AddRestaurant = (user_rest) => axios.post(REST_API_BASE_URL+"/restaurant/new",user_rest,config);
+export const RemoveRestaurant = (user_rest) => axios.post(REST_API_BASE_URL+"/restaurant/remove",user_rest,config);
 export const ChangeRestaurantName = (rest_details) => axios.put(REST_API_BASE_URL+"restaurant/rename",rest_details,config);
 export const GetAllUserRestaurants = () => axios.get(REST_API_BASE_URL+"/restaurant/userpage",config);
-export const GetAllOwnerRestaurants = () => axios.get(REST_API_BASE_URL+window.location.pathname+"/all",config);
-export const SuggestAllRestaurants = (name) => axios.get(REST_API_BASE_URL+window.location.pathname+"/"+name,{params:{}},config);
+export const GetAllOwnerRestaurants = () => axios.get(REST_API_BASE_URL+"/restaurant/all",config);
+export const SuggestAllRestaurants = (name) => axios.get(REST_API_BASE_URL+"/restaurant/"+name,{params:{}},config);
 
 export const AddFoodItem = (id,item) => axios.post(REST_API_BASE_URL+"/menu/add",item,{params:{rest_id:id}},config);
 export const GetAllItems = (id) => axios.get(REST_API_BASE_URL+"/menu/all",{params:{rest_id:id}},config);
