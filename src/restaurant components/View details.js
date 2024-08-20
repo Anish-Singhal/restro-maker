@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import pancake from './buttermilk_pancakes.png'
 import logo from './logo.png'
 import Accordion from 'react-bootstrap/Accordion';
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { GetAllCategories, GetAllItems} from '../restaurant services/UserService';
 import ItemCounter from './ItemCounter';
 

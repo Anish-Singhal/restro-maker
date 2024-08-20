@@ -1,20 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import "./Order.css"
 import Navbar from './Navbar';
+import navContext from './Context/navContext'
+import ItemCounter from './ItemCounter';
+import { NavLink } from 'react-router-dom';
 
 export default function Order(){
-    const [cartItems,setCartItems] = useState([
-        { id: 1, title: 'Greek Salad', price: 12, quantity: 2, imageUrl: 'path_to_greek_salad_image' },
-        { id: 2, title: 'Peri Peri Rolls', price: 12, quantity: 3, imageUrl: 'path_to_peri_peri_rolls_image' }
-    ]);
 
-    const subtotal = 60;
-    const deliveryFee = 5;
+    const context = useContext(navContext);
+    const {cartItems,setCartItems} = context;
+
+    const subtotal = cartItems.reduce((accum, item) => accum + (item.price * item.quantity), 0);
+    const deliveryFee = 50;
     const total = subtotal + deliveryFee;
 
     const removeItem = (id) => {
-        // Implement remove functionality
+        setCartItems(prevItems => prevItems.filter(item => item.item_id !== id));
     };
+
+    const changeColorIn = (e) => {
+        e.target.style.color = "red";
+    }
+
+    const changeColorOut = (e) => {
+        e.target.style.color = "black";
+    }
 
     return (
         <>
@@ -33,13 +43,13 @@ export default function Order(){
                 </thead>
                 <tbody>
                     {cartItems.map(item => (
-                        <tr key={item.id}>
-                            <td><img src={item.imageUrl} alt={item.title} /></td>
-                            <td>{item.title}</td>
-                            <td>${item.price}</td>
-                            <td>{item.quantity}</td>
-                            <td>${item.price * item.quantity}</td>
-                            <td><a href="/" className="remove" onClick={() => removeItem(item.id)}>x</a></td>
+                        <tr key={item.item_id}>
+                            <td><img src="images.jpg" alt={item.item_name}/></td>
+                            <td>{item.item_name}</td>
+                            <td>Rs. {item.price}</td>
+                            <td><ItemCounter item={item}/></td>
+                            <td>Rs. {item.price * item.quantity}</td>
+                            <td><i className="fa-solid fa-trash" onClick={() => removeItem(item.item_id)} onMouseOver={changeColorIn} onMouseOut={changeColorOut}  style={{ cursor: 'pointer'}}></i></td>
                         </tr>
                     ))}
                 </tbody>
@@ -50,18 +60,18 @@ export default function Order(){
                     <div className='fw-bold fs-4'>Cart Total</div>
                     <div className="subtotal">
                         <span>Subtotal</span>
-                        <span>${subtotal}</span>
+                        <span>Rs. {subtotal}</span>
                     </div>
                     <div className="delivery-fee border-top border-2">
                         <span>Delivery Fee</span>
-                        <span>${deliveryFee}</span>
+                        <span>Rs. {deliveryFee}</span>
                     </div>
                     <div className="total border-top border-2">
                         <span>Total</span>
-                        <span>${total}</span>
+                        <span>Rs. {total}</span>
                     </div>
                     <div>
-                        <a href="/" className="my-2 checkout-button">PROCEED TO CHECKOUT</a>
+                        <NavLink className="my-2 checkout-button">PROCEED TO CHECKOUT</NavLink>
                     </div>
                 </div>
                 <div className="flex-column promo-code col-7 align-items-center justify-content-start">
