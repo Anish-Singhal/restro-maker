@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import {BrowserRouter as Router,Routes,Route,} from "react-router-dom";
+import {HashRouter,Routes,Route,} from "react-router-dom";
 import Homepage from './restaurant components/HomePage';
 import Login from './restaurant components/Login';
 import RestaurantPage from './restaurant components/RestuarantList';
@@ -20,7 +20,7 @@ function App() {
   return (
     <>
     <NavState>
-      <Router>
+      <HashRouter>
       <ScrollToTop/>
         <Routes>
           <Route exact path ="/" element={<Homepage/>}></Route>
@@ -35,7 +35,7 @@ function App() {
           <Route exact path ='/order' element={<Order/>}/>
           <Route exact path ='/profile' element={<Profile/>}/>
         </Routes>
-      </Router>
+      </HashRouter>
     </NavState>
     </>
   );
