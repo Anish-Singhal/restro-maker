@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/restro-maker/static/css/main.b30bb83f.css",
+    "main.js": "/restro-maker/static/js/main.a03366c3.js",
+    "static/js/453.ed3810f9.chunk.js": "/restro-maker/static/js/453.ed3810f9.chunk.js",
+    "static/media/Card-2.png": "/restro-maker/static/media/Card-2.279994a4faa48307d67a.png",
+    "static/media/Restro-maker.jpg": "/restro-maker/static/media/Restro-maker.659c38c81ff881f05db7.jpg",
+    "static/media/buttermilk_pancakes.png": "/restro-maker/static/media/buttermilk_pancakes.2b7d6c1db3d6c6109e63.png",
+    "static/media/background3.JPG": "/restro-maker/static/media/background3.4b59a8fb57d10dbc7d18.JPG",
+    "static/media/logo.png": "/restro-maker/static/media/logo.1f6d388e2c13084d8fea.png",
+    "index.html": "/restro-maker/index.html",
+    "main.b30bb83f.css.map": "/restro-maker/static/css/main.b30bb83f.css.map",
+    "main.a03366c3.js.map": "/restro-maker/static/js/main.a03366c3.js.map",
+    "453.ed3810f9.chunk.js.map": "/restro-maker/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b30bb83f.css",
+    "static/js/main.a03366c3.js"
+  ]
+}
