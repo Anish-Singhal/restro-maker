@@ -4,8 +4,6 @@ import Navbar from './Navbar'
 import { AddRestaurant, GetAllOwnerRestaurants, RemoveRestaurant } from '../restaurant services/UserService';
 import logo from "./Card-2.png"
 import navContext from './Context/navContext'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
 
 export default function RestaurantPage(props) {
 
@@ -14,10 +12,6 @@ export default function RestaurantPage(props) {
   const navigate = useNavigate();
   const [searchedRestaurant,setSearchedRestaurant] = useState("");
   const [response,setResponse] = useState(false);
-  const [image,setImage] = useState({
-    url:logo,
-    file:null
-  });
 
   const context = useContext(navContext);
   const {setTitle} = context;
@@ -58,27 +52,6 @@ export default function RestaurantPage(props) {
   const handleLocation = (event) => {
     setLocation(event.target.value);
     setEmptyLocation(0);
-  }
-  const handleRestImage = (event) => {
-    if(event.target.files[0].type==="image/png" || event.target.files[0].type==="image/jpeg"){
-      const reader = new FileReader();
-      reader.onload = (r) => {
-        setImage({
-          url:r.target.result,
-          file:event.target.files[0]
-        })
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-    else{
-      toast.error("Invalid File!! Upload .jpg or .png file only.",{
-        pauseOnHover: false,
-      })
-      setImage({
-        url:null,
-        file:null
-      })
-    }
   }
 
   const CreateNewRestaurant = (event) => {
@@ -235,9 +208,9 @@ export default function RestaurantPage(props) {
             <p className="fs-1 text-center">Add Restaurants in your restaurant list to show here.</p>
         </div>)}
       </div>}
-      {!response && <div className="d-flex justify-content-center bg-body-secondary mx-5 my-5 py-5 opacity-25">
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
+      {!response && <div class="d-flex justify-content-center bg-body-secondary mx-5 my-5 py-5 opacity-25">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>}
 
@@ -276,17 +249,6 @@ export default function RestaurantPage(props) {
                 <div className="mx-3" style={{width:"33vw"}}>
                     <div className='py-3 text-center h5 text-secondary'>Enter Restaurant Details (required)</div>
                     <div className='card mb-4 rounded'>
-                        <div className="card-body bg-white shadow-sm rounded-top pb-1">
-                            <div className='d-flex flex-column justify-content-center'>
-                                <img src={image.url} alt="Invalid file/url uploaded" width="300" className='mt-3 rounded mx-auto d-block text-center px-5'/>
-                                {image.file===null ? (<label htmlFor="exampleFormControlInput" className="form-label text-center my-3 fw-bold fs-5">Default Restaurant Image</label>
-                                ):(
-                                  <label htmlFor="exampleFormControlInput" className="form-label text-center my-3 fw-bold fs-5">Uploaded Restaurant Image</label>
-                                )}
-                                <input type="file" className={`form-control`} id="exampleFormControlInput" onChange={handleRestImage} autoComplete='off'/>
-                                <ToastContainer style={{fontSize:"3vh" ,width:"20vw"}}></ToastContainer>
-                            </div>
-                        </div>
                         <div className="card-body bg-white shadow-sm rounded-top pb-1">
                             <div>
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Restaurant Name</label>
