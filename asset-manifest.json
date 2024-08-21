@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/restro-maker/static/css/main.7debb303.css",
-    "main.js": "/restro-maker/static/js/main.9f3ea5a4.js",
+    "main.js": "/restro-maker/static/js/main.aceca0d3.js",
     "static/js/453.ed3810f9.chunk.js": "/restro-maker/static/js/453.ed3810f9.chunk.js",
     "static/media/Card-2.png": "/restro-maker/static/media/Card-2.279994a4faa48307d67a.png",
     "static/media/Restro-maker.jpg": "/restro-maker/static/media/Restro-maker.659c38c81ff881f05db7.jpg",
@@ -10,11 +10,11 @@
     "static/media/logo.png": "/restro-maker/static/media/logo.1f6d388e2c13084d8fea.png",
     "index.html": "/restro-maker/index.html",
     "main.7debb303.css.map": "/restro-maker/static/css/main.7debb303.css.map",
-    "main.9f3ea5a4.js.map": "/restro-maker/static/js/main.9f3ea5a4.js.map",
+    "main.aceca0d3.js.map": "/restro-maker/static/js/main.aceca0d3.js.map",
     "453.ed3810f9.chunk.js.map": "/restro-maker/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7debb303.css",
-    "static/js/main.9f3ea5a4.js"
+    "static/js/main.aceca0d3.js"
   ]
 }
