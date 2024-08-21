@@ -44,7 +44,7 @@ export default function Navbar(props) {
 
   const logout = ()=>{
     localStorage.removeItem("token")
-    window.location.pathname="/";
+    navigate("/")
     setTimeout(()=>{changeState(0)},300);
   }
 
@@ -60,7 +60,7 @@ export default function Navbar(props) {
 
   return (
     <div>
-      <nav className={`ps-3 mt-5 navbar-len mx-auto navbar navbar-expand-lg bg-body-tertiary rounded border border-success ${(window.location.pathname.includes("order"))?"text-bg-dark":"bg-warning-subtle"}`} data-bs-theme={`${(window.location.pathname.includes("menu") || window.location.pathname.includes("order") || window.location.pathname.includes("userpage"))?"dark":""}`} style={{boxShadow:"10px 10px 15px rgba(0, 0, 0, 0.5)"}}>
+      <nav className={`ps-3 mt-5 navbar-len mx-auto navbar navbar-expand-lg bg-body-tertiary rounded border border-success ${(window.location.hash.includes("order"))?"text-bg-dark":"bg-warning-subtle"}`} data-bs-theme={`${(window.location.hash.includes("menu") || window.location.hash.includes("order") || window.location.hash.includes("userpage"))?"dark":""}`} style={{boxShadow:"10px 10px 15px rgba(0, 0, 0, 0.5)"}}>
         <div className="container-fluid" style={{fontSize:"3vh"}}>
             <NavLink className="navbar-brand" to="/">Restro-Maker</NavLink>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="/navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ export default function Navbar(props) {
             </ul>
             {/* {logstate===1 && } */}
             {logstate===1 && <div className="d-flex dropdown">
-              <i className={`fa-solid fa-cart-shopping my-auto p-2 rounded-3 ${(window.location.pathname==="/orderpage" || window.location.pathname==="/order")?"text-white fs-3":""}`} style={{backgroundColor:"rgb(43,48,53,1)",color:"bisque",cursor:"pointer",fontSize:"3.8vh"}} onClick={GoToCart}></i>
+              <i className={`fa-solid fa-cart-shopping my-auto p-2 rounded-3 ${(window.location.hash==="#/orderpage" || window.location.hash==="#/order")?"text-white fs-3":""}`} style={{backgroundColor:"rgb(43,48,53,1)",color:"bisque",cursor:"pointer",fontSize:"3.8vh"}} onClick={GoToCart}></i>
                 <span role="button" data-bs-toggle="dropdown" aria-expanded="false" className='mx-3 px-3 my-auto fa-2xl'><i className="fa-solid fa-circle-user"></i></span>
                 <ul className="dropdown-menu">
                     <li><NavLink className="dropdown-item" to="/profile">Edit Profile &nbsp;&nbsp;<i className="fa-solid fa-pen"></i> </NavLink></li>
@@ -102,7 +102,7 @@ export default function Navbar(props) {
                 </ul>
             </div>}
             {logstate===0 && <NavLink to="/login"><button className="btn btn-outline-primary" type="submit">Login / Sign-Up</button></NavLink>}
-            {logstate===1 && (window.location.pathname==="/restaurant" || window.location.pathname==="/orderpage") && <form className="d-flex" role="search">
+            {logstate===1 && (window.location.hash==="#/restaurant" || window.location.hash==="#/orderpage") && <form className="d-flex" role="search">
                 <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="Search-box" onChange={GetSuggestions}  autoComplete='off'/>
                 <button className="btn btn-outline-success" type="button" onClick={HandleSearch}>Search</button>
                 <div id="Search-options" className = {`d-flex flex-column position-absolute bg-white rounded mx-1 my-5 px-2 shadow overflow-y-scroll `} style={{width:"15vw", maxHeight:"24vh"}}>

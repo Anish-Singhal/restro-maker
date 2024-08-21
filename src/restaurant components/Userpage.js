@@ -158,7 +158,7 @@ export default function UserPage() {
                         <i className="fas fa-star-half-alt text-warning"></i>
                         <i className="far fa-star text-warning"></i>
                       </span>
-                      <Link to="/restaurant/view" state={{id:restaurants.rest_id, title:restaurants.rest_name,prev_loc:window.location.pathname}} className="btn btn-primary" type="button"><b>View</b></Link>
+                      <Link to="/restaurant/view" state={{id:restaurants.rest_id, title:restaurants.rest_name,prev_loc:window.location.hash}} className="btn btn-primary" type="button"><b>View</b></Link>
                     </div>
                   </div>
                 </div>

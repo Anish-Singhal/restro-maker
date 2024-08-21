@@ -71,7 +71,7 @@ export default function ViewDetails() {
     }
 
     const GoToRestaurant = () => {
-        navigate(location.state?.prev_loc);
+        navigate(location.state?.prev_loc==="#/restaurant"?"/restaurant":"/orderpage");
     }
     const GoToCart = () => {
         navigate("/order");
@@ -107,7 +107,7 @@ export default function ViewDetails() {
                     <hr style={{ border: "2px solid #ffc107" }}></hr>
 
                     {/* Accordian section */}
-                    {location.state?.prev_loc==="/orderpage" && <div className="container mt-5 py-3 border rounded" style={{ backgroundColor: "beige" }}>
+                    {location.state?.prev_loc==="#/orderpage" && <div className="container mt-5 py-3 border rounded" style={{ backgroundColor: "beige" }}>
                         <h2 className="text-start mb-4 mx-5 fs-2 text-dark"><b>Other Details</b></h2>
                         <Accordion>
                             <Accordion.Item eventKey="0">
@@ -206,7 +206,7 @@ export default function ViewDetails() {
                                 <div className='d-flex align-items-center'>
                                     <p className="description overflow-hidden" style={{ height: '16vh'}}>I'm baby woke mlkshk wolf bitters live-edge blue bottle hammock freegan copper mug whatever cold-pressed</p>
                                     {/* Plus button */}
-                                    {location.state?.prev_loc==="/orderpage" && <ItemCounter item={item}/>}
+                                    {location.state?.prev_loc==="#/orderpage" && <ItemCounter item={item}/>}
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,7 @@ export default function ViewDetails() {
                                 <div className='d-flex align-items-center'>
                                     <p className="description overflow-hidden" style={{ height: '16vh'}}>I'm baby woke mlkshk wolf bitters live-edge blue bottle hammock freegan copper mug whatever cold-pressed</p>
                                     {/* Plus button */}
-                                    {location.state?.prev_loc==="/orderpage" && <ItemCounter item={item}/>}
+                                    {location.state?.prev_loc==="#/orderpage" && <ItemCounter item={item}/>}
                                 </div>
                             </div>
                         </div>
@@ -240,12 +240,12 @@ export default function ViewDetails() {
                         <div className='fs-1 text-center text-danger fw-bold'>No Items Available</div>
                     </div>)}
 
-                    {location.state?.prev_loc==="/orderpage" && ItemList.length>0 && <div className="d-grid py-4">
+                    {location.state?.prev_loc==="#/orderpage" && ItemList.length>0 && <div className="d-grid py-4">
                         <button className="btn btn-success fs-3 col-3 mx-auto" type="button" onClick={GoToCart}><b>Go to Cart</b></button>
                     </div>}
 
                     {/* Accordian section */}
-                    {location.state?.prev_loc==="/restaurant" && <div className="container mt-5 py-3 border rounded" style={{ backgroundColor: "beige" }}>
+                    {location.state?.prev_loc==="#/restaurant" && <div className="container mt-5 py-3 border rounded" style={{ backgroundColor: "beige" }}>
                         <h2 className="text-start mb-4 mx-5 fs-2 text-dark"><b>Other Details</b></h2>
                         <Accordion>
                             <Accordion.Item eventKey="0">

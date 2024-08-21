@@ -222,7 +222,7 @@ export default function RestaurantPage(props) {
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
                 <div className='card-footer d-flex justify-content-around py-3'>
-                  <NavLink to={`/restaurant/view`} state={{id:restaurants.rest_id, title:restaurants.rest_name,prev_loc:window.location.pathname}} className="card-link"><button className="btn btn-secondary px-4" type="button"><b>View</b></button></NavLink>
+                  <NavLink to={`/restaurant/view`} state={{id:restaurants.rest_id, title:restaurants.rest_name,prev_loc:window.location.hash}} className="card-link"><button className="btn btn-secondary px-4" type="button"><b>View</b></button></NavLink>
                   <NavLink to={`/restaurant/menu`} state={{id:restaurants.rest_id, title:restaurants.rest_name}} className="card-link"><button className="btn btn-primary px-4" type="button"><b>Edit</b></button></NavLink>
                 </div>
               </div>

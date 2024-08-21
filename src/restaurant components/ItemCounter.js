@@ -85,7 +85,7 @@ export default function ItemCounter({item}) {
 
     return (
         <div id={`counter-${item.item_id}`} className="ms-2">
-        {window.location.pathname !== "/order"? (cartItems.find(cartItem => cartItem.item_id === item.item_id) === undefined ? (
+        {window.location.hash !== "#/order"? (cartItems.find(cartItem => cartItem.item_id === item.item_id) === undefined ? (
             <div>
                 <button className="btn btn-outline-secondary ms-1" onClick={increaseCount}>+</button>
                 <h5 className='my-2'>ADD</h5>
